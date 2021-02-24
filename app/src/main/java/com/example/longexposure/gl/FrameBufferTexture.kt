@@ -1,7 +1,9 @@
 package com.example.longexposure.gl
 
+import android.graphics.Bitmap
 import android.opengl.GLES20
 import android.util.Log
+import java.nio.ByteBuffer
 
 class FrameBufferTexture(
     private var textureWidth: Int,
@@ -39,6 +41,8 @@ class FrameBufferTexture(
         GLES20.glTexParameteri(GLES20.GL_TEXTURE_2D, GLES20.GL_TEXTURE_WRAP_T, GLES20.GL_CLAMP_TO_EDGE)
         GLES20.glTexImage2D(GLES20.GL_TEXTURE_2D, 0, GLES20.GL_RGBA, width, height, 0, GLES20.GL_RGBA, GLES20.GL_UNSIGNED_BYTE, null)
         GLES20.glFramebufferTexture2D(GLES20.GL_FRAMEBUFFER, GLES20.GL_COLOR_ATTACHMENT0, GLES20.GL_TEXTURE_2D, textureId, 0)
+        GLES20.glClearColor(0.0f, 0.0f, 0.0f, 1.0f)
+        GLES20.glClear(GLES20.GL_DEPTH_BUFFER_BIT or GLES20.GL_COLOR_BUFFER_BIT)
 
         // check status
         val status = GLES20.glCheckFramebufferStatus(GLES20.GL_FRAMEBUFFER)

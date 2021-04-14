@@ -1,9 +1,7 @@
 package com.example.longexposure.gl
 
-import android.graphics.Bitmap
 import android.opengl.GLES20
 import android.util.Log
-import java.nio.ByteBuffer
 
 class FrameBufferTexture(
     private var textureWidth: Int,
@@ -49,10 +47,6 @@ class FrameBufferTexture(
         if (status != GLES20.GL_FRAMEBUFFER_COMPLETE) {
             Log.e("FBO", "Framebuffer init failed")
         }
-    }
-
-    override fun update() {
-        super.update()
     }
 
     fun render(renderAction: () -> Unit) {

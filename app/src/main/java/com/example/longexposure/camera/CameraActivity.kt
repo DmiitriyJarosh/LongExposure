@@ -91,7 +91,6 @@ class CameraActivity : AppCompatActivity() {
             }
         })
         vGlSurfaceView.setRenderer(renderer)
-        vGlSurfaceView.renderMode = RENDERMODE_WHEN_DIRTY
     }
 
     private fun startButtonClicked() {
